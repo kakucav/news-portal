@@ -2,6 +2,10 @@ body {
   margin-bottom: 3rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   background-color: rgb(224, 210, 210);
   padding: 0.6rem 0;
@@ -79,6 +83,43 @@ body {
   text-align: center;
 }
 
+.btn_load_more {
+  background-color: rgb(29, 23, 23);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.3rem;
+}
+
+.btn_read {
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0;
+  border: none;
+  background-color: rgb(29, 23, 23);
+  color: white;
+  font-size: 1.2rem;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.btn_read:hover {
+  color: white;
+}
+
+.not_found_msg {
+  text-align: center;
+  font-weight: 700;
+}
+
+.article_img {
+  width: 100%;
+}
+
+.article_details_list {
+  list-style: none;
+}
+
 @media only screen and (min-width: 768px) {
   .header {
     margin-bottom: 3rem;
@@ -91,20 +132,12 @@ body {
   .article_card {
     box-shadow: 1rem 1rem 1rem grey;
   }
-}
 
-.btn_read {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 1rem 0;
-  border: none;
-  background-color: rgb(29, 23, 23);
-  color: white;
-  font-size: 1.2rem;
-  border-bottom-left-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
+  .btn_read {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 @media only screen and (max-width: 768px) {

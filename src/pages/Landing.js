@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopHeadlines } from "../store/reducers/articles";
+import useDidMountEffect from "../hooks/useDidMountEffect";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ArticleCard from "../components/ArticleCard";
@@ -21,6 +22,10 @@ const Landing = () => {
   };
 
   useEffect(() => {
+    if (!topHeadlines.length) dispatch(getTopHeadlines({ page }));
+  }, []);
+
+  useDidMountEffect(() => {
     dispatch(getTopHeadlines({ page }));
   }, [page]);
 
@@ -43,7 +48,7 @@ const Landing = () => {
       {!!topHeadlines.length && (
         <Row className="cards_holder">
           {topHeadlines.map((article, index) => (
-            <ArticleCard key={index} article={article} />
+            <ArticleCard key={index} article={article} index={index} />
           ))}
         </Row>
       )}

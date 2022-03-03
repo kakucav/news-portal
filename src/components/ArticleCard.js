@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ article, index }) => {
   const { title, description, urlToImage } = article;
   const [btnReadStyle, setBtnReadStyle] = useState({ display: "none" });
+  const urlDefaultImage = process.env.REACT_APP_ARTICLE_DEFAULT_IMG;
 
   const handleInvalidImgUrl = (e) => {
     e.target.onError = null;
-    e.target.src = process.env.REACT_APP_ARTICLE_DEFAULT_IMG;
+    e.target.src = urlDefaultImage;
   };
 
   const showReadBtn = () => {
@@ -26,9 +28,9 @@ const ArticleCard = ({ article }) => {
         onMouseLeave={hideReadBtn}
       >
         <img
-          src={urlToImage}
+          src={urlToImage || urlDefaultImage}
           onError={handleInvalidImgUrl}
-          alt="article"
+          alt={title}
           className="article_card_img"
         />
         <div className="article_card_body">
@@ -38,9 +40,13 @@ const ArticleCard = ({ article }) => {
           <div>
             <p className="description">{description}</p>
           </div>
-          <button className="btn_read" style={btnReadStyle}>
+          <Link
+            to={`/article/${index}`}
+            className="btn_read"
+            style={btnReadStyle}
+          >
             Read full article
-          </button>
+          </Link>
         </div>
       </div>
     </Col>

@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Article from "./pages/Article";
 import Landing from "./pages/Landing";
+import SearchResults from "./pages/SearchResults";
+import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/article/:index" element={<Article />} />
+        <Route path="/search" element={<SearchResults />} />
+        <Route path="/article/:page/:index" element={<Article />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

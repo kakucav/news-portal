@@ -1,4 +1,5 @@
 import React from "react";
+import { formatDate } from "../helpers/format";
 
 const ArticleDetails = ({ article }) => {
   const {
@@ -12,19 +13,20 @@ const ArticleDetails = ({ article }) => {
   return (
     <ul className="article_details_list">
       <li>
-        <span>Source:</span> <span>{sourceName}</span>
+        Source: <span>{sourceName}</span>
       </li>
       <li>
-        <span>Author:</span> <span>{author ? author : "Unknown author"}</span>
+        Author: <span>{author ? author : "Unknown author"}</span>
       </li>
       <li>
-        <span>Title:</span> <span>{title}</span>
+        Title: <span>{title}</span>
       </li>
       <li>
-        <span>Description:</span> <span>{description}</span>
+        Description:{" "}
+        <span>{description ? description : "No description provided"}</span>
       </li>
       <li>
-        <span>Published at:</span> <span>{publishedAt}</span>
+        Published at: <span>{formatDate(publishedAt)}</span>
       </li>
     </ul>
   );

@@ -1,4 +1,5 @@
 body {
+  font-family: "Roboto", sans-serif;
   margin-bottom: 3rem;
 }
 
@@ -7,17 +8,39 @@ a {
 }
 
 .header {
-  background-color: rgb(224, 210, 210);
+  background-color: rgb(165, 165, 165);
   padding: 0.6rem 0;
 }
 
-.logo {
-  width: 50px;
+.search_input_holder {
+  align-self: center;
+  text-align: end;
+}
+
+.search_input_holder input {
+  border: none;
+  border-radius: 0.3rem;
+  height: 2rem;
+  padding: 0.4rem;
+}
+
+.search_term {
+  font-weight: 500;
+}
+
+.count_labels_holder {
+  display: flex;
+  margin-bottom: 0.5rem;
 }
 
 .count_label {
   font-weight: 600;
   display: inline-block;
+}
+
+.sort_by_select {
+  border-radius: 0.3rem;
+  padding: 0.4rem;
   margin-bottom: 1rem;
 }
 
@@ -64,8 +87,8 @@ a {
   border: 0.7rem solid #f3f3f3;
   border-top: 0.7rem solid black;
   border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   animation: spin 1s linear infinite;
 }
 
@@ -78,6 +101,7 @@ a {
   }
 }
 
+.landing_heading,
 .spinner_holder,
 .btn_load_more_holder {
   text-align: center;
@@ -118,11 +142,39 @@ a {
 
 .article_details_list {
   list-style: none;
+  padding: 0;
+}
+
+.article_details_list li {
+  margin-bottom: 1rem;
+}
+
+.article_details_list li span {
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.article_content {
+  margin-top: 2rem;
+  text-align: justify;
+  font-size: 1.1rem;
 }
 
 @media only screen and (min-width: 768px) {
   .header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo {
+    width: 9rem;
+  }
+
+  .search_input_holder input {
+    width: 35%;
+  }
+
+  .count_labels_holder {
+    justify-content: space-between;
   }
 
   .cards_holder {
@@ -141,8 +193,32 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
+  body {
+    padding-top: 4rem;
+  }
+
   .header {
-    margin-bottom: 1.5rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    width: 6rem;
+  }
+
+  .search_input_holder input {
+    width: 100%;
+  }
+
+  .landing_heading,
+  .search_heading {
+    margin-top: 1rem;
+  }
+
+  .count_labels_holder {
+    flex-direction: column;
   }
 
   .article_card {
@@ -151,5 +227,22 @@ a {
 
   .cards_holder {
     row-gap: 1.5rem;
+  }
+
+  .article_img_holder {
+    padding: 0;
+  }
+
+  .article_details_list li:first-child {
+    margin-top: 1rem;
+  }
+
+  .article_details_list,
+  .article_details_list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .article_details_list li {
+    margin-bottom: 1rem;
   }
 }

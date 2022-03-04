@@ -7,9 +7,16 @@ import Col from "react-bootstrap/Col";
 import ArticleDetails from "../components/ArticleDetails";
 
 const Article = () => {
-  const { index } = useParams();
-  const { topHeadlines } = useSelector((state) => state.articles);
-  const currentArticle = topHeadlines[index];
+  const { index, page } = useParams();
+  const { topHeadlines, searchResults } = useSelector(
+    (state) => state.articles
+  );
+  const currentArticle =
+    page === "top"
+      ? topHeadlines[index]
+      : page === "search"
+      ? searchResults[index]
+      : null;
 
   return (
     <Container>
@@ -24,7 +31,7 @@ const Article = () => {
         )}
         {currentArticle && (
           <>
-            <Col md={6}>
+            <Col md={6} className="article_img_holder">
               <img
                 className="article_img"
                 src={
@@ -36,6 +43,9 @@ const Article = () => {
             </Col>
             <Col md={6}>
               <ArticleDetails article={currentArticle} />
+            </Col>
+            <Col className="article_content">
+              <p>{currentArticle.content}</p>
             </Col>
           </>
         )}

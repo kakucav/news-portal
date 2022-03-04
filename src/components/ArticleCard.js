@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 
 const ArticleCard = ({ article, index }) => {
+  const { pathname } = useLocation();
   const { title, description, urlToImage } = article;
-  const [btnReadStyle, setBtnReadStyle] = useState({ display: "none" });
+  const styleForBtn =
+    window.innerWidth < 768 ? { display: "block" } : { display: "none" };
+  const [btnReadStyle, setBtnReadStyle] = useState(styleForBtn);
   const urlDefaultImage = process.env.REACT_APP_ARTICLE_DEFAULT_IMG;
+  const isTopHeadline = pathname === "/";
 
   const handleInvalidImgUrl = (e) => {
     e.target.onError = null;
@@ -40,8 +44,10 @@ const ArticleCard = ({ article, index }) => {
           <div>
             <p className="description">{description}</p>
           </div>
+        </div>
+        <div className="article_card_footer">
           <Link
-            to={`/article/${index}`}
+            to={`/article/${isTopHeadline ? "top" : "search"}/${index}`}
             className="btn_read"
             style={btnReadStyle}
           >

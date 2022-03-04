@@ -3,3 +3,9 @@ export const formatDate = (dateToFormat) => {
 
   return date.toLocaleString();
 };
+
+export const truncateIfLonger = (string, limit) => {
+  if (string.length < limit) return string;
+
+  return `${string.substring(0, limit - 3)}...`;
+};

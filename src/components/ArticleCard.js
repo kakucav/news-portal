@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Col from "react-bootstrap/Col";
+import { truncateIfLonger } from "../helpers/format";
 
 const ArticleCard = ({ article, index }) => {
   const { pathname } = useLocation();
@@ -39,10 +40,10 @@ const ArticleCard = ({ article, index }) => {
         />
         <div className="article_card_body">
           <div>
-            <span className="title">{title}</span>
+            <span className="title">{truncateIfLonger(title, 60)}</span>
           </div>
           <div>
-            <p className="description">{description}</p>
+            <p className="description">{truncateIfLonger(description, 180)}</p>
           </div>
         </div>
         <div className="article_card_footer">

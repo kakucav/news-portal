@@ -5,6 +5,8 @@ export const formatDate = (dateToFormat) => {
 };
 
 export const truncateIfLonger = (string, limit) => {
+  if (!string) return "No title/description";
+
   if (string.length < limit) return string;
 
   return `${string.substring(0, limit - 3)}...`;
